@@ -1,0 +1,74 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[margin=1.35cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\setmainfont{Microsoft YaHei}
+\setsansfont{Microsoft YaHei}
+\setCJKmainfont{Microsoft YaHei}
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip = 0pt plus 1pt
+\definecolor{ink}{HTML}{171411}
+\definecolor{muted}{HTML}{6F6A62}
+\definecolor{cobalt}{HTML}{234F86}
+\definecolor{line}{HTML}{DED7CA}
+\hypersetup{colorlinks=true,urlcolor=cobalt}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlist[itemize]{leftmargin=1.2em,itemsep=0.25em,topsep=0.25em}
+\titleformat{\section}{\large\bfseries\color{ink}}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{0.9em}{0.55em}
+
+\begin{document}
+
+{\Huge\bfseries 李赢洲}\hfill {\large Yingzhou Li}\\[0.35em]
+{\color{cobalt}\large 大模型应用工程实习 | RAG / Agent / GraphRAG / FastAPI 工程化}\\[0.4em]
+邮箱：\href{mailto:13054111853@163.com}{13054111853@163.com}
+\quad GitHub：\href{https://github.com/20082123}{github.com/20082123}
+
+\section*{个人定位}
+电子信息硕士在读，主攻大模型应用工程落地。具备 RAG/GraphRAG、FastAPI 服务、异步任务队列、本地模型调用优化和 LLM 批量评测实践，熟悉从文档解析、检索增强、任务调度、模型调用到部署评测的工程化流程。
+
+\section*{教育背景}
+\textbf{贵州大学} \hfill 2024.09 -- 至今\\
+电子信息（硕士）；研究方向：随机配置网络、强化学习；华为杯中国研究生数学建模竞赛国家二等奖；校三等奖学金。\\[0.25em]
+\textbf{防灾科技学院} \hfill 2020.09 -- 2024.06\\
+信息管理与信息系统（本科）；两次校二等奖学金。
+
+\section*{专业技能}
+\begin{itemize}
+  \item \textbf{大模型后端工程化：}LLM API / 本地模型接入、FastAPI、asyncio、异步任务队列、模型调用缓存、异常兜底、Docker Compose。
+  \item \textbf{RAG 与文档处理：}RAG / GraphRAG、Prompt 约束、结构化输出、pdfplumber、PaddleOCR、UnstructuredLoader、Milvus、混合检索、ReRanker、Neo4j。
+  \item \textbf{后端与数据链路：}Python、SQLite、Worker 异步处理、批量入库、JSON 清洗、日志分析、脚本自动化。
+  \item \textbf{评测与问题定位：}LLM/RAG 批量并发评测、指标口径设计、特征泄漏审查、失败原因分析、业务约束校验。
+\end{itemize}
+
+\section*{实习项目经历}
+\textbf{焊接工艺智能决策平台} \hfill 上海波士内智能科技有限公司\\
+AI 后端服务 / 工业文档 RAG / GraphRAG 数据链路
+\begin{itemize}
+  \item 面向工业标准 PDF 表格多、版式复杂、人工查询效率低的问题，参与问答系统后端链路搭建，负责文档解析服务、RAG 检索、异步任务队列、图谱同步和本地模型调用优化。
+  \item 设计“逐页检测 + 动态路由”机制，文本页走 pdfplumber，低字符密度或复杂表格页切换 PaddleOCR；7 页混合工业 PDF 解析耗时由 21.3 分钟降至约 13 秒，MVP Pipeline 控制在 1.5 分钟内。
+  \item 将大文档同步处理改为 FastAPI + SQLite + 独立 Worker 异步队列，避免上传请求长时间阻塞，并为状态查询、失败重试和横向扩展 Worker 预留接口边界。
+  \item 优化 LightRAG 本地模型调用链路，设计 CachedLocalLLMProxy 常驻单例缓存；单 Chunk 推理延迟由 144s 降至 1.2s，VRAM 峰值占用下降 96\%。
+  \item 开发 neo4j\_syncer 图谱同步模块，使用 UNWIND 批量写入节点与边，吞吐达到 680+ 节点/秒，打通 RAG 检索结果到 GraphRAG 关系数据的后端链路。
+\end{itemize}
+
+\textbf{TKE 电梯虚拟教练系统} \hfill 上海波士内智能科技有限公司\\
+批量评测脚本 / 数据链路校验 / RAG 效果分析
+\begin{itemize}
+  \item 围绕真实业务时间线审查工单、运行日志与维修记录的数据可见时间，发现“维修描述”字段存在时间轴与目标泄漏；剔除泄漏特征并重切窗口后，建立 68.4\% 的真实可靠模型基准。
+  \item 编写 Python 自动化评测脚本，对 1500+ 验证样本进行批量并发评测和 JSON 结果清洗，按 ErrorCode、Component 精确匹配和统计特征召回分析 RAG 融合效果。
+  \item 将评测流程拆为样本读取、模型调用、结果解析、指标统计和失败样本归因等环节，沉淀可复用的离线评测链路，便于后续对不同检索策略和 Prompt 版本做对比。
+\end{itemize}
+
+\section*{个人实践与项目}
+\textbf{AI News Weekly：AI 资讯自动邮件系统} \hfill \href{https://github.com/20082123/ai-news-weekly}{github.com/20082123/ai-news-weekly}\\
+使用 Python 实现资讯整理、结构化排版、邮件模板生成和自动发送流程，形成“信息整理 - 摘要改写 - 邮件生成 - 自动发送”的轻量工作流。\\[0.35em]
+\textbf{GEO Radar：AI 平台品牌召回与回答偏好评测}\\
+使用 Playwright + asyncio 自动化采集 AI 平台在汽车推荐类 Query 下的回答，并设计 LLM 结构化抽取流程，将自然语言回答转为品牌、车型、预算、推荐理由等字段，统计品牌出现频次、推荐排序和回答稳定性。
+
+\end{document}

@@ -1,0 +1,15 @@
+{
+  "name": "李赢洲 | 大模型应用工程实习",
+  "short_name": "李赢洲简历",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ee",
+  "theme_color": "#f7f4ee",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    }
+  ]
+}
