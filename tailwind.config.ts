@@ -5,10 +5,13 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        canvas: "#fafafa",
         paper: "#f7f4ee",
-        ink: "#171411",
-        muted: "#6f6a62",
-        line: "#ded7ca",
+        ink: "#09090b",
+        muted: "#62656b",
+        line: "#e1e4e8",
+        blueprint: "#2563eb",
+        graphite: "#3f3f46",
         moss: "#546a5b",
         cobalt: "#234f86",
         copper: "#a45d38",

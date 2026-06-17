@@ -8,7 +8,7 @@
   --font-display: "Georgia", "Songti SC", "STSong", "Noto Serif CJK SC",
     serif;
   color-scheme: light;
-  background: #f7f4ee;
+  background: #fafafa;
 }
 
 * {
@@ -22,11 +22,8 @@ html {
 body {
   margin: 0;
   overflow-x: hidden;
-  background:
-    radial-gradient(circle at 18% 8%, rgba(164, 93, 56, 0.12), transparent 26rem),
-    radial-gradient(circle at 82% 24%, rgba(84, 106, 91, 0.14), transparent 24rem),
-    #f7f4ee;
-  color: #171411;
+  background: #fafafa;
+  color: #09090b;
   font-family: var(--font-sans);
   letter-spacing: 0;
   text-rendering: optimizeLegibility;
@@ -34,7 +31,7 @@ body {
 }
 
 ::selection {
-  background: #234f86;
+  background: #2563eb;
   color: #fff;
 }
 
@@ -45,7 +42,7 @@ a {
 }
 
 a:focus-visible {
-  outline: 2px solid #234f86;
+  outline: 2px solid #2563eb;
   outline-offset: 4px;
 }
 
@@ -68,7 +65,7 @@ footer[id] {
   transform: translateY(-150%);
   border-radius: 999px;
   background: #171411;
-  color: #f7f4ee;
+  color: #fafafa;
   padding: 0.75rem 1rem;
   font-size: 0.875rem;
   font-weight: 700;
@@ -88,19 +85,29 @@ footer[id] {
   animation: fade-up 800ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 
-.grain::before {
+.site-shell {
+  background:
+    linear-gradient(90deg, rgba(9, 9, 11, 0.035) 1px, transparent 1px),
+    linear-gradient(rgba(9, 9, 11, 0.028) 1px, transparent 1px),
+    radial-gradient(circle at 12% 10%, rgba(37, 99, 235, 0.08), transparent 28rem),
+    radial-gradient(circle at 86% 2%, rgba(9, 9, 11, 0.05), transparent 22rem),
+    #fafafa;
+  background-size: 32px 32px, 32px 32px, auto, auto, auto;
+}
+
+.site-shell::before {
   content: "";
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 50;
-  opacity: 0.28;
+  opacity: 0.16;
   mix-blend-mode: multiply;
   background-image: linear-gradient(
-      rgba(23, 20, 17, 0.04) 1px,
+      rgba(9, 9, 11, 0.05) 1px,
       transparent 1px
     ),
-    linear-gradient(90deg, rgba(23, 20, 17, 0.035) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(9, 9, 11, 0.04) 1px, transparent 1px);
   background-size: 3px 3px;
   mask-image: linear-gradient(to bottom, black, transparent 68%);
 }
