@@ -25,21 +25,21 @@ const navItems = [
 
 const capabilityTracks = [
   {
-    title: "复杂文档进入 RAG",
+    title: "文档先处理干净",
     summary:
-      "处理过 PDF、表格、OCR 和结构化输出，不是只把文件塞进向量库。",
+      "PDF、表格、OCR、结构化输出都碰过。RAG 效果不好时，我通常先看解析和切分有没有问题。",
     proof: "解析时间从 21.3 分钟降到约 13 秒",
   },
   {
-    title: "模型调用能稳定服务",
+    title: "接口要能一直跑",
     summary:
-      "写接口时会考虑队列、缓存、失败重试和显存压力，而不是停在 demo 阶段。",
+      "模型调用不是调通一次就结束。队列、缓存、重试、显存占用，都会影响后面能不能交给别人用。",
     proof: "单 Chunk 推理延迟 144s 降至 1.2s",
   },
   {
-    title: "评测能说明问题",
+    title: "评测别只看几个例子",
     summary:
-      "用批量脚本和失败归因看模型到底错在哪，避免只凭几条样例下结论。",
+      "我会写脚本批量跑样本，再看失败原因。这样比挑几条好看的回答更有用。",
     proof: "1500+ 样本并发评测与 JSON 清洗",
   },
 ];
@@ -156,7 +156,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="mt-8 max-w-3xl text-2xl leading-10 text-ink sm:text-4xl sm:leading-[1.16]">
-            我做的是偏工程的 AI 应用：能把 RAG、模型调用和评测脚本接成真正可用的后端服务。
+            我现在找大模型应用工程实习，偏后端。做过 RAG、模型调用优化和评测脚本，也愿意把那些不太光鲜的工程细节补上。
           </p>
           <p className="mt-7 max-w-2xl text-base leading-8 text-muted sm:text-lg">
             {profile.summary}
@@ -219,7 +219,7 @@ export default function Home() {
             href="#fit"
             className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-muted transition hover:text-ink"
           >
-            看我适合做什么
+            看具体能做什么
             <ArrowDown className="size-4" aria-hidden="true" />
           </a>
         </aside>
@@ -229,7 +229,7 @@ export default function Home() {
         id="fit"
         step="01"
         eyebrow="Fit"
-        title="先说清楚我能补哪块"
+        title="我能接的活"
       >
         <div className="grid gap-4 md:grid-cols-3">
           {capabilityTracks.map((track, index) => (
@@ -258,7 +258,7 @@ export default function Home() {
         id="projects"
         step="02"
         eyebrow="Case Studies"
-        title="项目不按时间堆，按问题讲"
+        title="几个做过的项目"
       >
         <div className="grid gap-5">
           {projects.map((project, index) => (
@@ -338,7 +338,7 @@ export default function Home() {
         id="evidence"
         step="03"
         eyebrow="Evidence"
-        title="技能放回具体场景里看"
+        title="技能，按项目里实际用过的看"
       >
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div className="grid gap-4">
@@ -398,7 +398,7 @@ export default function Home() {
         id="education"
         step="04"
         eyebrow="Education"
-        title="教育背景简单放这里"
+        title="教育背景"
       >
         <div className="grid gap-4 md:grid-cols-2">
           {education.map((item) => (
@@ -431,10 +431,10 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr]">
           <SectionIntro
             eyebrow="Contact"
-            title="如果团队正在做 RAG 后端、LLM 评测或 AI 应用工具，可以聊聊。"
+            title="如果你们缺一个能处理 RAG 后端、模型调用或评测脚本的实习生，可以发邮件给我。"
           >
             <p>
-              页面正文不放手机号和微信。需要完整联系方式的话，可以发邮件，或下载公开版 PDF 简历。
+              我没有把手机号和微信放在页面上。需要的话邮件里沟通，PDF 里也有公开版信息。
             </p>
           </SectionIntro>
           <div className="flex flex-col justify-end gap-3">

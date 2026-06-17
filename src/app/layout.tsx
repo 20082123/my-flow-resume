@@ -5,7 +5,7 @@ import "./globals.css";
 const siteUrl = "https://www.my-flow.top";
 const title = "李赢洲 | 大模型应用工程实习";
 const description =
-  "李赢洲的中文求职简历网站，聚焦 RAG、GraphRAG、FastAPI、LLM 评测与 AI 应用工程。";
+  "李赢洲的中文求职网站，记录 RAG 后端、GraphRAG、FastAPI 和 LLM 评测相关项目。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
