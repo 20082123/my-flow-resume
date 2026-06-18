@@ -231,7 +231,7 @@ export default function Home() {
         id="fit"
         step="01"
         eyebrow="Fit"
-        title="这版简历想突出什么"
+        title="我能做什么"
       >
         <div className="grid gap-4 md:grid-cols-3">
           {capabilityTracks.map((track, index) => (
@@ -378,7 +378,7 @@ export default function Home() {
         id="evidence"
         step="04"
         eyebrow="Evidence"
-        title="技能，按项目里实际用过的看"
+        title="实际用过的技术"
       >
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
           <div className="grid gap-4">
@@ -471,10 +471,10 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr]">
           <SectionIntro
             eyebrow="Contact"
-            title="如果你们缺一个能做 AI 应用开发、RAG 后端或 Agent 原型的实习生，可以发邮件给我。"
+            title="如果有 AI 应用开发、RAG 后端或 Agent 原型相关实习，可以邮件联系我。"
           >
             <p>
-              页面正文不放手机号和微信。新版 PDF 简历里保留了完整联系方式。
+              页面正文不放手机号和微信，新版 PDF 简历里有完整联系方式。
             </p>
           </SectionIntro>
           <div className="flex flex-col justify-end gap-3">
