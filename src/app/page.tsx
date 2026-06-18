@@ -13,34 +13,36 @@ import {
   profile,
   projects,
   proofPoints,
+  sideProjects,
   skills,
 } from "@/data/profile";
 
 const navItems = [
   { href: "#fit", label: "匹配" },
   { href: "#projects", label: "案例" },
+  { href: "#more", label: "小项目" },
   { href: "#evidence", label: "证据" },
   { href: "#contact", label: "联系" },
 ];
 
 const capabilityTracks = [
   {
-    title: "文档先处理干净",
+    title: "把 AI 功能接成后端接口",
     summary:
-      "PDF、表格、OCR、结构化输出都碰过。RAG 效果不好时，我通常先看解析和切分有没有问题。",
-    proof: "解析时间从 21.3 分钟降到约 13 秒",
+      "做过 FastAPI、异步 Worker、任务状态、失败重试和模型调用缓存。功能能跑起来之后，还要能被调试。",
+    proof: "FastAPI + SQLite + Worker",
   },
   {
-    title: "接口要能一直跑",
+    title: "RAG 先看文档和召回",
     summary:
-      "模型调用不是调通一次就结束。队列、缓存、重试、显存占用，都会影响后面能不能交给别人用。",
-    proof: "单 Chunk 推理延迟 144s 降至 1.2s",
+      "处理过工业 PDF、维修手册、表格、OCR、metadata、混合检索和 Query Rewrite。回答不好时，我会先看数据链路。",
+    proof: "21.3 分钟解析降到约 13 秒",
   },
   {
-    title: "评测别只看几个例子",
+    title: "Agent 要有工具边界",
     summary:
-      "我会写脚本批量跑样本，再看失败原因。这样比挑几条好看的回答更有用。",
-    proof: "1500+ 样本并发评测与 JSON 清洗",
+      "LangGraph 原型里会区分查询、规划建议和敏感控制动作。返航、降落这类动作要进 Human-in-the-loop。",
+    proof: "Intent Routing / Tool Calling / HITL",
   },
 ];
 
@@ -156,7 +158,7 @@ export default function Home() {
             </span>
           </h1>
           <p className="mt-8 max-w-3xl text-2xl leading-10 text-ink sm:text-4xl sm:leading-[1.16]">
-            我现在找大模型应用工程实习，偏后端。做过 RAG、模型调用优化和评测脚本，也愿意把那些不太光鲜的工程细节补上。
+            我现在找 AI 应用开发实习。偏 Python 后端，做过工业文档 RAG，也在用 LangGraph 练 Agent 编排和工具调用。
           </p>
           <p className="mt-7 max-w-2xl text-base leading-8 text-muted sm:text-lg">
             {profile.summary}
@@ -175,7 +177,7 @@ export default function Home() {
               className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md border border-line bg-white/55 px-6 py-3 text-sm font-semibold text-ink transition hover:-translate-y-0.5 hover:border-ink"
             >
               <Download className="size-4" aria-hidden="true" />
-              下载公开简历
+              下载 PDF 简历
             </a>
             <a
               href={profile.github}
@@ -229,7 +231,7 @@ export default function Home() {
         id="fit"
         step="01"
         eyebrow="Fit"
-        title="我能接的活"
+        title="这版简历想突出什么"
       >
         <div className="grid gap-4 md:grid-cols-3">
           {capabilityTracks.map((track, index) => (
@@ -258,7 +260,7 @@ export default function Home() {
         id="projects"
         step="02"
         eyebrow="Case Studies"
-        title="几个做过的项目"
+        title="主线项目"
       >
         <div className="grid gap-5">
           {projects.map((project, index) => (
@@ -272,17 +274,6 @@ export default function Home() {
                     <p className="font-mono text-xs tracking-[0.2em] text-muted">
                       CASE 0{index + 1}
                     </p>
-                    {project.href ? (
-                      <a
-                        href={project.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-md border border-line p-2 text-muted transition hover:border-ink hover:text-ink"
-                        aria-label={`${project.title} GitHub`}
-                      >
-                        <ArrowUpRight className="size-4" aria-hidden="true" />
-                      </a>
-                    ) : null}
                   </div>
                   <h3 className="mt-8 font-display text-3xl leading-tight text-ink sm:text-4xl">
                     {project.title}
@@ -335,8 +326,57 @@ export default function Home() {
       </FlowSection>
 
       <FlowSection
-        id="evidence"
+        id="more"
         step="03"
+        eyebrow="More Work"
+        title="更多小项目"
+      >
+        <div className="grid gap-4 md:grid-cols-2">
+          {sideProjects.map((project) => (
+            <article
+              key={project.title}
+              className="rounded-lg border border-line bg-white/42 p-6 transition hover:-translate-y-1 hover:bg-white/62"
+            >
+              <div className="flex items-start justify-between gap-5">
+                <div>
+                  <p className="text-sm leading-7 text-muted">{project.org}</p>
+                  <h3 className="mt-4 font-display text-3xl leading-tight text-ink">
+                    {project.title}
+                  </h3>
+                </div>
+                {project.href ? (
+                  <a
+                    href={project.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="rounded-md border border-line p-2 text-muted transition hover:border-ink hover:text-ink"
+                    aria-label={`${project.title} GitHub`}
+                  >
+                    <ArrowUpRight className="size-4" aria-hidden="true" />
+                  </a>
+                ) : null}
+              </div>
+              <p className="mt-5 text-sm leading-7 text-ink/78">
+                {project.description}
+              </p>
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded-md border border-line bg-canvas/70 px-3 py-1 text-xs text-muted"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </FlowSection>
+
+      <FlowSection
+        id="evidence"
+        step="04"
         eyebrow="Evidence"
         title="技能，按项目里实际用过的看"
       >
@@ -396,7 +436,7 @@ export default function Home() {
 
       <FlowSection
         id="education"
-        step="04"
+        step="05"
         eyebrow="Education"
         title="教育背景"
       >
@@ -431,10 +471,10 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr]">
           <SectionIntro
             eyebrow="Contact"
-            title="如果你们缺一个能处理 RAG 后端、模型调用或评测脚本的实习生，可以发邮件给我。"
+            title="如果你们缺一个能做 AI 应用开发、RAG 后端或 Agent 原型的实习生，可以发邮件给我。"
           >
             <p>
-              我没有把手机号和微信放在页面上。需要的话邮件里沟通，PDF 里也有公开版信息。
+              页面正文不放手机号和微信。新版 PDF 简历里保留了完整联系方式。
             </p>
           </SectionIntro>
           <div className="flex flex-col justify-end gap-3">
@@ -465,7 +505,7 @@ export default function Home() {
               download
               className="group flex items-center justify-between rounded-lg bg-ink px-5 py-4 text-sm font-semibold text-canvas transition hover:bg-blueprint"
             >
-              <span>下载公开版 PDF 简历</span>
+              <span>下载 PDF 简历</span>
               <Download className="size-4" aria-hidden="true" />
             </a>
           </div>

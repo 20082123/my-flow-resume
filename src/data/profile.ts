@@ -6,22 +6,21 @@ import {
   GitBranch,
   Mail,
   ServerCog,
-  Trophy,
 } from "lucide-react";
 
 export const profile = {
   name: "李赢洲",
   englishName: "Yingzhou Li",
-  role: "大模型应用工程实习",
-  focus: "RAG / Agent / GraphRAG / FastAPI 工程化",
+  role: "AI 应用开发实习",
+  focus: "Python / FastAPI / RAG / Agent / LangGraph",
   email: "13054111853@163.com",
   github: "https://github.com/20082123",
   githubLabel: "github.com/20082123",
-  resumePath: "/li-yingzhou-resume-public.pdf",
+  resumePath: "/li-yingzhou-ai-application-intern.pdf",
   headline:
-    "我主要做 RAG 和大模型应用后端。最近一段时间都在处理文档解析、模型调用和评测脚本这些工程细节。",
+    "我主要做 AI 应用开发，偏 Python 后端、RAG 和 Agent 原型。最近在补 LangGraph、工具调用和人工确认这些应用链路。",
   summary:
-    "贵州大学电子信息硕士在读。实习里做过工业 PDF 问答后端、GraphRAG 数据同步、本地模型缓存，也写过 LLM 批量评测脚本。现在找大模型应用工程相关实习，偏后端，愿意从脏数据和接口细节做起。",
+    "贵州大学电子信息硕士在读。实习里参与过工业文档智能问答 PoC，做过文档解析、异步任务、模型调用缓存和图谱入库。个人项目更偏 Agent 和 RAG：意图路由、Tool Calling、Memory、Human-in-the-loop，还有 Bad Case 评测。",
 };
 
 export const proofPoints = [
@@ -36,14 +35,14 @@ export const proofPoints = [
     detail: "本地模型调用缓存",
   },
   {
-    label: "图谱吞吐",
-    value: "680+ nodes/s",
-    detail: "Neo4j 批量写入",
+    label: "Agent 原型",
+    value: "LangGraph",
+    detail: "意图路由 / Tool Calling / HITL",
   },
   {
-    label: "评测规模",
-    value: "1500+ samples",
-    detail: "离线并发评测",
+    label: "RAG 运维",
+    value: "Hybrid",
+    detail: "混合检索 / Query Rewrite / Bad Case",
   },
 ];
 
@@ -62,120 +61,125 @@ export const education = [
     school: "防灾科技学院",
     degree: "信息管理与信息系统（本科）",
     period: "2020.09 - 2024.06",
-    highlights: ["两次校二等奖学金"],
+    highlights: ["河北省数据分析竞赛省三等奖", "两次校二等奖学金"],
   },
 ];
 
 export const skills = [
   {
     icon: ServerCog,
-    title: "大模型后端工程化",
+    title: "Python 后端开发",
     items: [
-      "LLM API / 本地模型接入",
-      "FastAPI、asyncio、Worker 队列",
-      "模型调用缓存、异常兜底、Docker Compose",
+      "Python、FastAPI、asyncio、Pydantic",
+      "RESTful API、Worker 异步处理",
+      "异常兜底、任务状态持久化、模型调用封装",
     ],
   },
   {
     icon: FileSearch,
     title: "RAG 与文档处理",
     items: [
-      "RAG / GraphRAG、Prompt 约束、结构化输出",
-      "pdfplumber、PaddleOCR、UnstructuredLoader",
-      "Milvus、混合检索、ReRanker、Neo4j",
+      "文档解析清洗、语义分块、Prompt 约束",
+      "pdfplumber、PaddleOCR、Unstructured / OCR",
+      "Milvus、BM25 / 向量混合检索、Query Rewrite、ReRanker",
     ],
   },
   {
-    icon: DatabaseZap,
-    title: "数据处理与自动化",
+    icon: Bot,
+    title: "Agent 应用开发",
     items: [
-      "Python、SQLite、批量入库、JSON 清洗",
-      "日志分析、脚本自动化、离线评测流水线",
-      "Git 与工程协作基础",
+      "LangGraph / LangChain、Conditional Edges",
+      "Tool Calling、意图识别、任务路由",
+      "会话 Memory、Human-in-the-loop 原型实现",
     ],
   },
   {
     icon: BarChart3,
-    title: "评测与问题定位",
+    title: "工程化与评测",
     items: [
-      "LLM / RAG 批量并发评测",
-      "指标口径设计、特征泄漏审查",
-      "失败原因分析与业务约束校验",
+      "Docker Compose、Git、Redis、SQLite、RabbitMQ",
+      "日志分析、测试样例构造、Bad Case 归因",
+      "了解 Dify 工作流与 LoRA / P-Tuning 数据准备",
     ],
   },
 ];
 
 export const projects = [
   {
-    title: "焊接工艺智能决策平台",
-    org: "上海波士内智能科技有限公司",
-    tags: ["AI 后端服务", "工业文档 RAG", "GraphRAG 数据同步"],
+    title: "工业文档智能问答 PoC",
+    org: "上海波士内智能科技有限公司 | AI 应用工程实习",
+    tags: ["工业文档 RAG", "异步任务", "模型调用优化", "Neo4j"],
     problem:
-      "那套工业标准 PDF 很难直接喂给 RAG。表格多，扫描页也多，人工查起来慢；解析再慢一点，用户就会觉得系统不可用。",
+      "工业 PDF 里表格多、版式复杂，人工查询慢。PoC 要先把上传、解析、任务状态、模型调用和图谱入库这几段跑通，否则问答效果没法稳定验证。",
     method:
-      "我主要做后端链路。先按页面情况分流：普通文本页走 pdfplumber，低字符密度或复杂表格页走 PaddleOCR。上传任务放进 FastAPI + SQLite + Worker 队列。LightRAG 本地模型调用也做了常驻缓存，减少重复加载。",
+      "在导师指导下参与“逐页检测 + 动态路由”解析方案，独立完成 pdfplumber 字符数阈值判定模块，并联调 PaddleOCR 切换逻辑。异步任务部分用 FastAPI + SQLite + Worker 改造长文档处理，补了上传、状态查询、失败记录和重试接口。LightRAG 侧做了模型客户端常驻缓存，Neo4j 侧实现 UNWIND 批量写入脚本。",
     result:
-      "最后，7 页混合 PDF 解析从 21.3 分钟降到约 13 秒，MVP Pipeline 控制在 1.5 分钟内。单 Chunk 推理从 144 秒降到 1.2 秒，VRAM 峰值占用下降 96%。Neo4j 批量同步达到 680+ 节点/秒。",
+      "7 页混合 PDF 样例解析耗时从 21.3 分钟降到约 13 秒；单 Chunk 推理延迟从 144s 降到 1.2s，VRAM 峰值占用降低 96%。图谱写入时处理了特殊字符转义、重复关系合并等细节。",
     stack: ["FastAPI", "SQLite", "Worker", "pdfplumber", "PaddleOCR", "LightRAG", "Neo4j"],
   },
   {
-    title: "TKE 电梯虚拟教练系统",
-    org: "上海波士内智能科技有限公司",
-    tags: ["批量评测脚本", "数据时间线校验", "RAG 效果分析"],
+    title: "基于 LangGraph 的无人机集群多智能体指挥原型",
+    org: "个人项目",
+    tags: ["LangGraph", "Intent Routing", "Tool Calling", "HITL"],
     problem:
-      "这个项目让我印象比较深的是数据时间线。预测故障时，如果把维修后的描述拿来当输入，离线分数会变好，但上线时根本拿不到。",
+      "无人机任务指挥里，自然语言指令经常混着查询、规划和控制动作。如果都交给一个 Prompt 处理，工具边界和敏感操作会变得很模糊。",
     method:
-      "我重新看了工单、运行日志和维修记录的可见时间，发现“维修描述”存在泄漏，于是去掉这个字段并重切窗口。评测部分写了 Python 脚本，批量跑验证样本、清洗 JSON、记录失败原因。",
+      "用 LangGraph 搭了“总指挥 Agent + 航线规划 / 状态诊断 / 载荷任务 / 运维问答专员 Agent”的分层结构。通过 LLM 意图识别和 Conditional Edges 做路由，复合指令先拆解再按顺序执行。工具侧封装 get_drone_status、plan_route、check_battery、return_home、land 等模拟接口，并用 Pydantic 校验入参和业务约束。",
     result:
-      "模型基准回到 68.4%。这个数字没那么漂亮，但更接近真实使用场景。后来 1500+ 验证样本都用同一套脚本跑，方便比较检索策略和 Prompt 版本。",
-    stack: ["Python", "asyncio", "JSON", "RAG Evaluation", "日志分析"],
+      "原型可以维护 Thread 级会话状态，记录当前无人机、任务目标、关键槽位和工具结果。对返航、降落等高风险动作加入 Human-in-the-loop 中断确认，并整理了测试指令和 Bad Case 用来检查路由稳定性。",
+    stack: ["LangGraph", "LangChain", "Pydantic", "Tool Calling", "Memory", "Human-in-the-loop"],
   },
+  {
+    title: "基于 RAG 的无人机智能运维知识库原型",
+    org: "个人项目",
+    tags: ["文档解析", "混合检索", "Query Rewrite", "RAG 评估"],
+    problem:
+      "无人机维修手册里有故障代码、跨页表格和图文混排。直接检索经常找不到关键片段，回答也不容易追溯来源。",
+    method:
+      "用 Unstructured / OCR 解析维修手册、故障码表和保养记录，按章节层级、故障对象和语义边界分块，并保留来源、页码、部件型号等 metadata。检索链路采用向量检索 + 关键词召回，针对故障代码和部件型号做精确词召回，再用 Query Rewrite 把口语化描述改成更适合检索的问题。",
+    result:
+      "回答被约束为引用来源片段，并输出故障原因、排查步骤和注意事项。后续用测试问答集和 Bad Case 表按未命中、错召回、答案不完整等类型迭代分块、检索和 Prompt。",
+    stack: ["RAG", "Unstructured", "OCR", "Milvus", "BM25", "Query Rewrite", "Prompt"],
+  },
+];
+
+export const sideProjects = [
   {
     title: "AI News Weekly",
     org: "个人开源项目",
-    tags: ["Python 自动化", "邮件生成", "信息流处理"],
-    problem:
-      "AI 资讯每天都很多，我不想每周再手工复制粘贴。",
-    method:
-      "用 Python 把主题、收件人和内容字段放进配置，生成邮件模板后自动发送。",
-    result:
-      "目前可以跑完整流程。它不算复杂，但很适合练习把零散信息变成稳定的脚本任务。",
-    stack: ["Python", "Email Automation", "Templates", "Workflow"],
+    tags: ["Python 自动化", "邮件生成"],
+    description:
+      "把 AI 资讯整理、邮件模板生成和自动发送串成轻量脚本，主要用来练习配置化信息流处理。",
     href: "https://github.com/20082123/ai-news-weekly",
   },
   {
     title: "GEO Radar",
     org: "个人实践",
-    tags: ["Playwright", "asyncio", "LLM 结构化分析"],
-    problem:
-      "同一个推荐问题，豆包、Qwen 这类平台给出的品牌和顺序经常不一样。只看聊天截图，很难说谁更稳定。",
-    method:
-      "用 Playwright + asyncio 采集豆包、Qwen 等平台的回答，再用 LLM 把自然语言结果抽成品牌、车型、预算和推荐理由等字段。",
-    result:
-      "先做到了频次和排序统计。后面如果继续做，会把它扩展成个人作品集里的 AI 搜索评测工具。",
-    stack: ["Playwright", "asyncio", "LLM Extraction", "Analytics"],
+    tags: ["Playwright", "asyncio", "LLM 抽取"],
+    description:
+      "采集豆包、Qwen 等平台的推荐回答，再把品牌、车型、预算和推荐理由抽成结构化字段，观察不同平台的排序稳定性。",
   },
 ];
 
 export const highlights = [
   {
     icon: Bot,
-    title: "愿意把细节补齐",
-    text: "RAG 项目里，解析、队列、缓存、失败样本这些小地方经常决定体验。我比较愿意钻这些地方。",
+    title: "能从应用链路往下做",
+    text: "不只写提示词，也会处理接口、队列、文档解析、工具调用和人工确认这些环节。",
+  },
+  {
+    icon: DatabaseZap,
+    title: "RAG 项目里愿意看脏细节",
+    text: "解析、分块、metadata、召回策略和 Bad Case 往往比页面上的回答更早暴露问题。",
   },
   {
     icon: GitBranch,
-    title: "优化先看瓶颈",
-    text: "做优化时会先看慢在哪里，再用延迟、显存、吞吐或评测结果说明改动有没有用。",
-  },
-  {
-    icon: Trophy,
-    title: "有一点科研训练",
-    text: "电子信息硕士在读，接触过数学建模、强化学习和随机配置网络。",
+    title: "Agent 原型关注边界",
+    text: "会把查询、规划建议和敏感控制动作拆开处理，高风险动作加人工确认。",
   },
   {
     icon: Mail,
     title: "适合的实习方向",
-    text: "偏后端的大模型应用工程，尤其是 RAG 系统、LLM 工具、评测脚本和数据处理。",
+    text: "AI 应用开发、RAG 后端、Agent 工具链、文档处理和评测脚本。",
   },
 ];

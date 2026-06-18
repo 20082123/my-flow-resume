@@ -3,9 +3,9 @@ import type { ReactNode } from "react";
 import "./globals.css";
 
 const siteUrl = "https://www.my-flow.top";
-const title = "李赢洲 | 大模型应用工程实习";
+const title = "李赢洲 | AI 应用开发实习";
 const description =
-  "李赢洲的中文求职网站，记录 RAG 后端、GraphRAG、FastAPI 和 LLM 评测相关项目。";
+  "李赢洲的中文求职网站，记录 Python、FastAPI、RAG、LangGraph Agent 与 AI 应用开发相关项目。";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -19,12 +19,17 @@ export const metadata: Metadata = {
   creator: "李赢洲",
   keywords: [
     "李赢洲",
+    "AI 应用开发",
     "AI 应用工程",
     "大模型应用工程",
     "RAG",
+    "Agent",
+    "LangGraph",
+    "LangChain",
     "GraphRAG",
     "FastAPI",
-    "LLM Evaluation",
+    "Tool Calling",
+    "Human-in-the-loop",
     "求职简历",
   ],
   alternates: {
@@ -42,7 +47,7 @@ export const metadata: Metadata = {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "李赢洲大模型应用工程简历网站",
+        alt: "李赢洲 AI 应用开发实习简历网站",
       },
     ],
   },

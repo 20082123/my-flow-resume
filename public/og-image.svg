@@ -4,7 +4,7 @@
   <circle cx="210" cy="520" r="230" fill="#a45d38" opacity=".14"/>
   <path d="M110 120h980" stroke="#171411" stroke-width="2" opacity=".35"/>
   <text x="110" y="255" fill="#171411" font-family="Georgia, 'Songti SC', serif" font-size="92" font-weight="700">李赢洲</text>
-  <text x="110" y="335" fill="#6f6a62" font-family="Aptos, 'Microsoft YaHei', sans-serif" font-size="40">Yingzhou Li · 大模型应用工程实习</text>
-  <text x="110" y="430" fill="#171411" font-family="Aptos, 'Microsoft YaHei', sans-serif" font-size="34">RAG / Agent / GraphRAG / FastAPI 工程化</text>
+  <text x="110" y="335" fill="#6f6a62" font-family="Aptos, 'Microsoft YaHei', sans-serif" font-size="40">Yingzhou Li · AI 应用开发实习</text>
+  <text x="110" y="430" fill="#171411" font-family="Aptos, 'Microsoft YaHei', sans-serif" font-size="34">Python / FastAPI / RAG / Agent / LangGraph</text>
   <text x="110" y="510" fill="#234f86" font-family="Aptos, 'Microsoft YaHei', sans-serif" font-size="30">www.my-flow.top</text>
 </svg>
