@@ -109,6 +109,7 @@ export const projects = [
     title: "工业文档智能问答 PoC",
     org: "上海波士内智能科技有限公司 | AI 应用工程实习",
     tags: ["工业文档 RAG", "异步任务", "模型调用优化", "Neo4j"],
+    owned: "文档解析判定模块、异步任务接口、模型客户端缓存、Neo4j 批量写入脚本",
     problem:
       "工业 PDF 里表格多、版式复杂，人工查询慢。PoC 要先把上传、解析、任务状态、模型调用和图谱入库这几段跑通，否则问答效果没法稳定验证。",
     method:
@@ -121,6 +122,7 @@ export const projects = [
     title: "基于 LangGraph 的无人机集群多智能体指挥原型",
     org: "个人项目",
     tags: ["LangGraph", "Intent Routing", "Tool Calling", "HITL"],
+    owned: "Agent 分层结构、意图路由、模拟工具封装、Human-in-the-loop 确认流程",
     problem:
       "无人机任务指挥里，自然语言指令经常混着查询、规划和控制动作。如果都交给一个 Prompt 处理，工具边界和敏感操作会变得很模糊。",
     method:
@@ -133,6 +135,7 @@ export const projects = [
     title: "基于 RAG 的无人机智能运维知识库原型",
     org: "个人项目",
     tags: ["文档解析", "混合检索", "Query Rewrite", "RAG 评估"],
+    owned: "维修文档解析、metadata 设计、混合检索链路、Bad Case 分类迭代",
     problem:
       "无人机维修手册里有故障代码、跨页表格和图文混排。直接检索经常找不到关键片段，回答也不容易追溯来源。",
     method:

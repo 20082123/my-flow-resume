@@ -18,12 +18,13 @@ import {
 } from "@/data/profile";
 
 const navItems = [
-  { href: "#fit", label: "匹配" },
-  { href: "#projects", label: "案例" },
-  { href: "#more", label: "小项目" },
-  { href: "#evidence", label: "证据" },
+  { href: "#fit", label: "能力" },
+  { href: "#projects", label: "项目" },
+  { href: "#evidence", label: "技术" },
   { href: "#contact", label: "联系" },
 ];
+
+const roleFit = ["AI 应用开发实习", "Python / FastAPI 后端", "RAG 或 Agent 工具链"];
 
 const capabilityTracks = [
   {
@@ -163,6 +164,16 @@ export default function Home() {
           <p className="mt-7 max-w-2xl text-base leading-8 text-muted sm:text-lg">
             {profile.summary}
           </p>
+          <div className="mt-7 flex max-w-2xl flex-wrap gap-2">
+            {roleFit.map((item) => (
+              <span
+                key={item}
+                className="rounded-md border border-line bg-white/50 px-3 py-2 text-xs font-medium text-ink/74"
+              >
+                {item}
+              </span>
+            ))}
+          </div>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
               href={`mailto:${profile.email}`}
@@ -295,6 +306,7 @@ export default function Home() {
 
                 <div className="grid gap-5">
                   {[
+                    ["我负责", project.owned],
                     ["问题", project.problem],
                     ["方法", project.method],
                     ["结果", project.result],
