@@ -7,6 +7,7 @@ import {
   Mail,
   MoveRight,
 } from "lucide-react";
+import { MotionController } from "@/components/motion-controller";
 import {
   education,
   highlights,
@@ -87,9 +88,9 @@ function FlowSection({
   children: React.ReactNode;
 }) {
   return (
-    <section id={id} className="relative border-t border-line">
+    <section id={id} data-section className="relative border-t border-line">
       <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-[0.34fr_1fr]">
-        <aside className="lg:sticky lg:top-28 lg:self-start">
+        <aside data-reveal className="lg:sticky lg:top-28 lg:self-start">
           <p className="font-mono text-xs tracking-[0.22em] text-muted">
             {step}
           </p>
@@ -109,6 +110,7 @@ function FlowSection({
 export default function Home() {
   return (
     <main className="site-shell min-h-screen overflow-hidden">
+      <MotionController />
       <a href="#fit" className="skip-link">
         跳到主要内容
       </a>
@@ -128,6 +130,7 @@ export default function Home() {
               <a
                 key={item.href}
                 href={item.href}
+                data-nav-link
                 className="rounded-md px-3 py-2 transition hover:bg-ink hover:text-canvas sm:px-4"
               >
                 {item.label}
@@ -168,6 +171,7 @@ export default function Home() {
             {roleFit.map((item) => (
               <span
                 key={item}
+                data-reveal
                 className="rounded-md border border-line bg-white/50 px-3 py-2 text-xs font-medium text-ink/74"
               >
                 {item}
@@ -211,6 +215,7 @@ export default function Home() {
               {proofPoints.map((item) => (
                 <div
                   key={item.label}
+                  data-reveal
                   className="grid grid-cols-[0.42fr_1fr] items-baseline gap-4 border-t border-line pt-4 first:border-t-0 first:pt-0"
                 >
                   <p className="text-xs font-semibold text-blueprint">
@@ -248,6 +253,7 @@ export default function Home() {
           {capabilityTracks.map((track, index) => (
             <article
               key={track.title}
+              data-reveal
               className="rounded-lg border border-line bg-white/42 p-6 transition hover:-translate-y-1 hover:bg-white/62"
             >
               <p className="font-mono text-xs text-muted">
@@ -277,6 +283,7 @@ export default function Home() {
           {projects.map((project, index) => (
             <article
               key={project.title}
+              data-reveal
               className="rounded-lg border border-line bg-white/48 p-6 shadow-sm transition hover:-translate-y-1 hover:bg-white/66 sm:p-8"
             >
               <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr]">
@@ -311,7 +318,7 @@ export default function Home() {
                     ["方法", project.method],
                     ["结果", project.result],
                   ].map(([label, text]) => (
-                    <div key={label} className="grid gap-3 sm:grid-cols-[5rem_1fr]">
+                    <div key={label} data-reveal className="grid gap-3 sm:grid-cols-[5rem_1fr]">
                       <p className="font-mono text-xs font-semibold tracking-[0.22em] text-blueprint">
                         {label}
                       </p>
@@ -347,6 +354,7 @@ export default function Home() {
           {sideProjects.map((project) => (
             <article
               key={project.title}
+              data-reveal
               className="rounded-lg border border-line bg-white/42 p-6 transition hover:-translate-y-1 hover:bg-white/62"
             >
               <div className="flex items-start justify-between gap-5">
@@ -399,6 +407,7 @@ export default function Home() {
               return (
                 <article
                   key={skill.title}
+                  data-reveal
                   className="rounded-lg border border-line bg-white/42 p-6"
                 >
                   <div className="flex items-start gap-4">
@@ -431,7 +440,7 @@ export default function Home() {
             {highlights.map((item) => {
               const Icon = item.icon;
               return (
-                <article key={item.title} className="border-t border-line pt-5">
+                <article key={item.title} data-reveal className="border-t border-line pt-5">
                   <Icon className="size-5 text-blueprint" aria-hidden="true" />
                   <h3 className="mt-4 text-lg font-semibold text-ink">
                     {item.title}
@@ -456,6 +465,7 @@ export default function Home() {
           {education.map((item) => (
             <article
               key={item.school}
+              data-reveal
               className="rounded-lg border border-line bg-white/42 p-6"
             >
               <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
@@ -479,7 +489,7 @@ export default function Home() {
         </div>
       </FlowSection>
 
-      <footer id="contact" className="border-t border-line px-5 py-16 sm:px-8">
+      <footer id="contact" data-section className="border-t border-line px-5 py-16 sm:px-8">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1fr_0.8fr]">
           <SectionIntro
             eyebrow="Contact"
@@ -526,3 +536,4 @@ export default function Home() {
     </main>
   );
 }
+
